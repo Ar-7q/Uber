@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Start from './pages/Start'
 import UserLogin from './pages/UserLogin'
-// import UserSignup from './pages/UserSignup'
+import UserSignup from './pages/UserSignup'
 import Captainlogin from './pages/CaptainLogin'
 // import CaptainSignup from './pages/CaptainSignup'
 // import Home from './pages/Home'
@@ -25,7 +25,7 @@ const App = () => {
         {/* <Route path='/riding' element={<Riding />} /> */}
          {/* <Route path='/captain-riding' element={<CaptainRiding />} /> */}
 
-        {/* <Route path='/signup' element={<UserSignup />} /> */}
+         <Route path='/signup' element={<UserSignup />} /> 
         <Route path='/captain-login' element={<Captainlogin />}/>
          
        
