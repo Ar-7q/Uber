@@ -85,7 +85,7 @@ const UserLogin = () => {
         <Link
           to='/captain-login'
           style={{ backgroundColor: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: '600', marginBottom: '1.25rem', borderRadius: '0.5rem', padding: '0.5rem 1rem', width: '100%', fontSize: '1.125rem', placeholder: { fontSize: '1rem' } }}
-        >Sign In Captain</Link>
+        >Sign As Captain</Link>
       </div>
     </div>
   )

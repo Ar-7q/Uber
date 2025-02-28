@@ -79,7 +79,7 @@ const UserLogin = () => {
 
         </form>
         <p style={{ textAlign: 'center' ,fontFamily:'cursive'}}>New User? <br/>
-          <Link to='/signup' style={{ color: '#1e90ff' }}>Register as Captain</Link></p>
+          <Link to='/captain-signup' style={{ color: '#1e90ff' }}>Register as Captain</Link></p>
       </div>
       <div>
         <Link
