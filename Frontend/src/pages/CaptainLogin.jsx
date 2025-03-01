@@ -1,94 +1,87 @@
-import React, { useState, useContext } from 'react'
-import { Link } from 'react-router-dom'
-// import { UserDataContext } from '../context/UserContext'
-// import { useNavigate } from 'react-router-dom'
-// import axios from 'axios'
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { CaptainDataContext } from '../context/CaptainContext';
 
+const Captainlogin = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-const UserLogin = () => {
-  const [ email, setEmail ] = useState('')
-  const [ password, setPassword ] = useState('')
-  const [ userData, setUserData ] = useState({})
-
-  // const { user, setUser } = useContext(UserDataContext)
-  // const navigate = useNavigate()
-
-
+  const { setCaptain } = useContext(CaptainDataContext);
+  const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    const captain = { email, password };
 
-    setUserData({
-      email: email,
-      password: password
-    })
-    console.log(userData);
-    setEmail('')
-    setPassword('')
-  }
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/captain/login`, captain);
+      if (response.status === 200) {
+        const data = response.data;
+        setCaptain(data.captain);
+        localStorage.setItem('token', data.token);
+        navigate('/captain-home');
+      }
+    } catch (error) {
+      console.error('Login error:', error.response?.data || error.message);
+    }
 
-  //   const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, userData)
-
-  //   if (response.status === 200) {
-  //     const data = response.data
-  //     setUser(data.user)
-  //     localStorage.setItem('token', data.token)
-  //     navigate('/home')
-  //   }
-
-
-  //   
-  // }
+    setEmail('');
+    setPassword('');
+  };
 
   return (
-    <div style={{ padding: '1.5rem', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' ,background:'wheat'}}>
+    <div style={{ padding: '28px', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
       <div>
-        <img style={{ width: '7rem', marginBottom: '0.5rem' }} src="https://files.oaiusercontent.com/file-Fprk9BUqQjFpYqGXeCGkTH?se=2025-02-28T17%3A22%3A41Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Ddf74c1e8-43d6-413c-abde-b7038826fb02.webp&sig=c/UmiTdWKIAALrXqKgLT8SUnUFa8MRy7OUKmq4kPsdM%3D" alt="" />
+        <img 
+          style={{ width: '8rem', marginBottom: '12px' }} 
+          src="https://files.oaiusercontent.com/file-GeHzHHWRBVsABPjNfhkgbP?se=2025-03-01T16%3A35%3A06Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Df2f972cc-aaf1-47dc-9d12-19522db41f10.webp&sig=Y8ofJd8yn3BYMlp9TWhBA2V5nAt8%2BqlSt9e7PSLRmgM%3D" 
+          alt="" 
+        />
 
-        <form onSubmit={(e)=>{
-          submitHandler(e)
-        }}>
-          <h3 style={{ fontSize: '1.2rem', fontWeight: '500', marginBottom: '0.5rem', fontFamily:'-moz-initial', color:'Highlight'}}>Driver-Email</h3>
+        <form onSubmit={submitHandler}>
+          <h3 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '8px' }}>What's your email</h3>
           <input
             required
             value={email}
-            onChange={(e)=>{
-              setEmail(e.target.value)
-            }}
-            style={{ backgroundColor: '#eeeeee', marginBottom: '1.75rem', borderRadius: '0.5rem', padding: '0.5rem 1rem', width: '100%', fontSize: '1.125rem', placeholder: { fontSize: '1rem' } }}
+            onChange={(e) => setEmail(e.target.value)}
+            style={{ backgroundColor: '#eeeeee', marginBottom: '28px', borderRadius: '8px', padding: '10px', border: '1px solid #ccc', width: '100%', fontSize: '16px' }}
             type="email"
-            placeholder='abc@gmail.com'
+            placeholder="email@example.com"
           />
 
-          <h3 style={{ fontSize: '1.125rem', fontWeight: '500', marginBottom: '0.5rem',fontFamily:'calinri', color:'Highlight' }}>Password</h3>
-
+          <h3 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '8px' }}>Enter Password</h3>
           <input
-            style={{ backgroundColor: '#eeeeee', marginBottom: '1.75rem', borderRadius: '0.5rem', padding: '0.5rem 1rem', width: '100%', fontSize: '1.2rem', placeholder: { fontSize: '1rem' } }}
-            required 
+            required
             value={password}
-            onChange={(e)=>{
-              setPassword(e.target.value)
-            }}
+            onChange={(e) => setPassword(e.target.value)}
+            style={{ backgroundColor: '#eeeeee', marginBottom: '28px', borderRadius: '8px', padding: '10px', border: '1px solid #ccc', width: '100%', fontSize: '16px' }}
             type="password"
-            placeholder='*********'
+            placeholder="password"
           />
 
           <button
-            style={{ backgroundColor: 'blue', color: 'white', fontWeight: '600', marginBottom: '0.75rem', borderRadius: '0.5rem', padding: '0.5rem 1rem', width: '100%', fontSize: '1.125rem', placeholder: { fontSize: '1rem' } }}
-          >Login</button>
-
+            style={{ backgroundColor: '#111', color: 'white', fontWeight: '600', marginBottom: '12px', borderRadius: '8px', padding: '10px', width: '100%', fontSize: '16px' }}
+          >
+            Login
+          </button>
         </form>
-        <p style={{ textAlign: 'center' ,fontFamily:'cursive'}}>New User? <br/>
-          <Link to='/captain-signup' style={{ color: '#1e90ff' }}>Register as Captain</Link></p>
+
+        <p style={{ textAlign: 'center' }}>
+          Join a fleet? <Link to="/captain-signup" style={{ color: '#007bff' }}>Register as a Captain</Link>
+        </p>
       </div>
+
       <div>
         <Link
-          to='/login'
-          style={{ backgroundColor: 'orange', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: '600', marginBottom: '1.25rem', borderRadius: '0.5rem', padding: '0.5rem 1rem', width: '100%', fontSize: '1.125rem', placeholder: { fontSize: '1rem' } }}
-        >Sign as user</Link>
+          to="/login"
+          style={{ backgroundColor: '#d5622d', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: '600', marginBottom: '20px', borderRadius: '8px', padding: '10px', width: '100%', fontSize: '16px' }}
+        >
+          Sign in as User
+        </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UserLogin
+export default Captainlogin;

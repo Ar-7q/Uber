@@ -6,7 +6,7 @@ const Start = () => {
     <div>
       <div
         style={{
-          backgroundImage: "url('https://files.oaiusercontent.com/file-DBwPRa5PXaf6PZgh57t8gq?se=2025-02-27T21%3A21%3A29Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D3e77afff-20e7-429d-b73f-70a6f52e348a.webp&sig=Q9vi7/pmg808FSw8tXdJnaVqQVnv7VYCErag98spBUk%3D')",
+          backgroundImage: "url('https://files.oaiusercontent.com/file-DBwPRa5PXaf6PZgh57t8gq?se=2025-03-01T11%3A42%3A52Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D3e77afff-20e7-429d-b73f-70a6f52e348a.webp&sig=0zqXmYBytF/N3/f7DsborE6zRd5MQNWTTorE1PfBJeY%3D')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: '100vh',
@@ -23,14 +23,15 @@ const Start = () => {
             height:'8rem',
             marginLeft: '2rem',
           }}
-          src="https://files.oaiusercontent.com/file-UiLCNQBqT9QaQeuar3imz3?se=2025-02-27T21%3A25%3A02Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D46397869-5c08-48bc-b3d2-a0164e4fe85d.webp&sig=7chRFN4HjKoxpzWzbHH%2Briln3olCA23aytIQo1K8kUk%3D"
+          src="https://files.oaiusercontent.com/file-YCmzXMiLoHsqXk6S2Lag2w?se=2025-03-01T11%3A42%3A52Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D59c4020c-9845-43f0-b665-bc70aeaaffef.webp&sig=cHDkMVUzn1Hy5Hx7OdBMMoBU2x2d46A2iGGLKdN9XtQ%3D"
           alt=""
         />
         <div
           style={{
-            backgroundColor: 'white',
+            backgroundColor: 'wheat',
             padding: '1rem',
             paddingBottom: '2rem',
+            
           }}
         >
           <h2
