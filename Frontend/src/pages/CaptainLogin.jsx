@@ -68,7 +68,7 @@ const Captainlogin = () => {
         </form>
 
         <p style={{ textAlign: 'center' }}>
-          Join a fleet? <Link to="/captain-signup" style={{ color: '#007bff' }}>Register as a Captain</Link>
+          Join the Driver fleet ? <Link to="/captain-signup" style={{ color: '#007bff' }}>Register as a Captain</Link>
         </p>
       </div>
 
